@@ -16,6 +16,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
+import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -101,6 +102,40 @@ public class GUI {
         }
     }
 
+    public void changeWidth(double newWidth)
+    {
+        for(Node row:canvasRow.getChildren())
+        {
+            for(Node col:((HBox) row).getChildren())
+            {
+                GridPane temp = ((GridPane)((StackPane)col).getChildren().get(0));
+                ListView tempList = ((ListView)temp.getChildren().get(6)) ;
+                tempList.setPrefWidth(newWidth);
+                for(int i =1;i<6;i+=2){
+                    TextField tempField = ((TextField)temp.getChildren().get(i)) ;
+                    tempField.setPrefWidth(newWidth-60);
+                }
+
+            }
+
+        }
+    }
+
+    public void changeHeight(double newHeight)
+    {
+        for(Node row:canvasRow.getChildren())
+        {
+            for(Node col:((HBox) row).getChildren())
+            {
+                GridPane temp = ((GridPane)((StackPane)col).getChildren().get(0));
+                ListView tempList = ((ListView)temp.getChildren().get(6)) ;
+                tempList.setPrefHeight(newHeight-125);
+
+            }
+
+        }
+    }
+
     public Node getGUI()
     {
         return canvas;
@@ -116,6 +151,8 @@ public class GUI {
         List<DataHolder.Data> temp = new ArrayList<>();
         Polygon hexagon = new Polygon();
         RotateTransition rotateTransition = new RotateTransition();
+
+
 
         AddressField()
         {
@@ -192,8 +229,8 @@ public class GUI {
 
         Node getField()
         {
-            GridPane grid = new GridPane();
             ListView<DataHolder.Data> listView =  new ListView<>(list);
+            GridPane grid = new GridPane();
             listView.setPrefHeight(250);
 
             grid.setAlignment(Pos.TOP_LEFT);
@@ -208,7 +245,7 @@ public class GUI {
 
             grid.add(new Text("Numeris"),0,2);
             grid.add(numberField,1,2);
-            grid.add(listView,0,3,3,1);
+            grid.add(listView,0,3,2,1);
 
             canvas.getChildren().add(grid);
             canvas.getChildren().add(hexagon);

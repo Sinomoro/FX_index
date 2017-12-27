@@ -29,10 +29,12 @@ public class Main extends Application {
             final int fieldWidth = 265;
             gui.addFieldCol(newSceneWidth.intValue()/fieldWidth);
             gui.removeFieldCol(newSceneWidth.intValue()/fieldWidth);
+            int colCount = (newSceneWidth.intValue())/fieldWidth;
+            colCount=(colCount==0)?(1):(colCount);
+            gui.changeWidth((newSceneWidth.doubleValue())/(colCount)-30);
 
-            int rowCount = newSceneWidth.intValue()/fieldWidth;
-            double colSpacing = (rowCount>1)?((newSceneWidth.intValue()%fieldWidth)/(rowCount-1)):(1);
-            gui.colSpace(colSpacing);
+//            double colSpacing = (rowCount>1)?((newSceneWidth.intValue()%fieldWidth)/(rowCount-1)):(1);
+//            gui.colSpace(colSpacing);
         });
 
         scene.heightProperty().addListener((observableValue, oldSceneHeight, newSceneHeight) -> {
@@ -41,8 +43,8 @@ public class Main extends Application {
             gui.removeFieldRow(newSceneHeight.intValue()/fieldWidth);
 
             int rowCount = newSceneHeight.intValue()/fieldWidth;
-            double rowSpacing = (rowCount>1)?((newSceneHeight.intValue()%fieldWidth-10)/(rowCount-1)):(1);
-            gui.rowSpace(rowSpacing);
+            rowCount=(rowCount==0)?(1):(rowCount);
+            gui.changeHeight((newSceneHeight.doubleValue())/(rowCount)-30);
         });
     }
 }
