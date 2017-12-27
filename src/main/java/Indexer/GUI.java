@@ -16,7 +16,6 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Polygon;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.text.Text;
 import javafx.util.Duration;
 
@@ -40,19 +39,19 @@ public class GUI {
         addFieldRow(1);
         addFieldCol(1);
     }
-
-    public void rowSpace(double val)
-    {
-        canvasRow.setSpacing(val);
-    }
-
-    public void colSpace(double val)
-    {
-        for(Node row:canvasRow.getChildren())
-        {
-            ((HBox) row).setSpacing(val);
-        }
-    }
+//
+//    public void rowSpace(double val)
+//    {
+//        canvasRow.setSpacing(val);
+//    }
+//
+//    public void colSpace(double val)
+//    {
+//        for(Node row:canvasRow.getChildren())
+//        {
+//            ((HBox) row).setSpacing(val);
+//        }
+//    }
 
     public void addFieldCol(int totalColNeeded)
     {
